@@ -35,7 +35,8 @@ INSERT INTO customers (customer_id, first_name, last_name, age)
 VALUES
     (5, 'Frankie', 'Foy', 5),
 	(6, 'Scout', 'Foy', 2),
-	(7, 'John', 'McClane', 53),
+	(7, 'John', 'McClane', 53)
+	;
 ```
 
 Populate the products table:
@@ -45,7 +46,8 @@ INSERT INTO products (product_id, product_name, product_price)
 VALUES
     (101, 'Ryzen 7 Laptop', 999.99),
     (102, 'iPhone 13', 599.99),
-	(103, '27" Monitor', 199.99),
+	(103, '27" Monitor', 199.99)
+	;
 ```
 
 Verify records in the customers table:
