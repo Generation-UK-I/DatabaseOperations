@@ -493,12 +493,8 @@ Transactions must adhere to the following ACID properties:
 
 ### Challenge
 
-[Click here for the Challenge guide](Practical_challenge.md)
-- Use the skills and knowledge you have built up to model the DB requirements for a company.
-
-### Project
-
-
+[Click here for the Challenge guide](Practical_challenge.md)  
+Use the skills and knowledge you have built up to model the DB requirements for a company.
 
 ## Non-Relational (NoSQL) Databases
 
@@ -659,3 +655,9 @@ A data pipeline describes the path data takes from being gathered, to being usea
 - A Data-Lake, into which RAW unstructured data can be deposited. 
 - Unstructured data from the lake can be extracted, and transformed into a semi-structured format, suitable for storing in a Data Warehouse.
 - Semi-structured data from the warehouse can then be transferred into a NoSQL DB if no further structure is necessary, or transformed into a structured format for ingestion into a SQL database.
+
+
+## SQL Project
+
+[Click here for the Project guide](Database_project.md)  
+Work on a project combining and showcasing your Python and relational database knowledge.
