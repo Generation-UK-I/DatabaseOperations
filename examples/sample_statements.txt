@@ -1,0 +1,86 @@
+INSERT INTO customers (customer_ID, first_name, last_name, age) VALUES (1, 'Alice', 'Smith', 33);
+INSERT INTO customers (customer_ID, first_name, last_name, age) VALUES (2, 'Alan', 'Jones', 28);
+INSERT INTO customers (customer_ID, first_name, last_name, age) VALUES (3, 'Noche', 'Snead', 3);
+INSERT INTO customers (customer_ID, first_name, last_name, age) VALUES (4, 'Weasley', 'Snead', 2);
+INSERT INTO customers (customer_ID, first_name, last_name, age) VALUES (5, 'Frankie', 'Foy', 5);
+INSERT INTO customers (customer_ID, first_name, last_name, age) VALUES (6, 'Scout', 'Foy', 2);
+INSERT INTO customers (customer_ID, first_name, last_name, age) VALUES (7, 'John', 'McClane', 53);
+INSERT INTO customers (customer_ID, first_name, last_name, age) VALUES (8, 'Martin', 'Riggs', 56);
+INSERT INTO customers (customer_ID, first_name, last_name, age) VALUES (9, 'Jack', 'Black', 49);
+INSERT INTO customers (customer_ID, first_name, last_name, age) VALUES (10, 'Taylor', 'Swift', 36);
+
+
+INSERT INTO customers (customer_id, first_name, last_name, age)
+VALUES
+    (5, 'Frankie', 'Foy', 5),
+	(6, 'Scout', 'Foy', 2),
+	(7, 'John', 'McClane', 53),
+	(8, 'Martin', 'Riggs', 56),
+	(9, 'Jack', 'Black', 49),
+	(10, 'Taylor', 'Swift', 36),
+    (11, 'Sarah', 'Johnson', 21),
+	(12, 'Bob', 'Williams', 42),
+    (13, 'Claire', 'Brown', 34);
+	
+	
+CREATE TABLE customers (
+	customer_ID INT NOT NULL PRIMARY KEY,
+	first_name VARCHAR(30),
+	last_name VARCHAR(30),
+	age INT UNSIGNED NOT NULL
+);
+
+CREATE TABLE orders (
+    order_id INT UNSIGNED NOT NULL PRIMARY KEY,
+    customer_id INT NOT NULL,
+    product_id INT,
+    order_date DATE,
+    order_quantity INT,
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+
+
+INSERT INTO products (product_id, product_name, product_price)
+VALUES
+    (101, 'Ryzen 7 Laptop', 999.99),
+    (102, 'iPhone 13', 599.99),
+    (103, 'iPad', 399.99),
+	(104, 'Macbook Pro', 1999.99),
+    (105, 'Galaxy Fold 5', 1599.99),
+    (106, 'iPad Pro', 799.99),
+	(107, 'i7 Laptop', 999.99),
+    (108, '27" Monitor', 199.99),
+    (109, 'Mouse', 9.99),
+	(110, 'Webcam', 29.99),
+    (111, 'Macbook Pro', 1999.99),
+    (112, 'Tablet', 399.99);
+
+
+
+INSERT INTO orders (order_id, customer_id, product_id, order_date, order_quantity)
+VALUES
+    (201, 13, 101, '2023-11-22', 2),
+    (202, 12, 102, '2023-11-23', 1),
+    (203, 11, 103, '2023-11-24', 3),
+	(204, 10, 101, '2023-11-22', 2),
+    (205, 9, 102, '2023-11-23', 1),
+    (206, 8, 103, '2023-11-24', 3),
+	(207, 7, 101, '2023-11-22', 2),
+    (208, 6, 102, '2023-11-23', 1),
+    (209, 5, 103, '2023-11-24', 3),
+	(210, 4, 101, '2023-11-22', 2),
+    (211, 3, 102, '2023-11-23', 1),
+    (212, 2, 103, '2023-11-24', 3),
+	(213, 1, 101, '2023-11-22', 2),
+    (214, 13, 102, '2023-11-23', 1),
+    (215, 12, 103, '2023-11-24', 3),
+	(216, 11, 101, '2023-11-22', 2),
+    (217, 10, 102, '2023-11-23', 1),
+    (218, 9, 103, '2023-11-24', 3),
+	(219, 8, 101, '2023-11-22', 2),
+    (220, 7, 102, '2023-11-23', 1),
+    (221, 6, 103, '2023-11-24', 3),
+	(222, 5, 101, '2023-11-22', 2),
+    (223, 4, 102, '2023-11-23', 1),
+    (224, 3, 103, '2023-11-24', 3);

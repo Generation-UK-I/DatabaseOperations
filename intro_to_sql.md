@@ -418,9 +418,28 @@ WHERE o.order_id = 201;
 
 ### Join Types
 
-There are three common types of joins:
+There are three common types of joins. To understand them, let's say we wanted to aggregate the exam scores for three students for the AWS and AZ exam, and the results are kept in separate tables.
 
-- INNER - An `INNER` join returns results from both tables which match the query condition. Our example above is an Inner join, using `JOIN` or `INNER JOIN` will both create this type of query.
+<ins>AWS Results</ins>
+|Student    |Course |Score  |
+|-----------|------ |-------|
+|Ant        |AWS    |Null   |
+|Jess       |AWS    |90     |
+|Richard    |AWS    |92     |
+
+<ins>Azure Results</ins>
+|Student    |Course |Score  |
+|-----------|------ |-------|
+|Ant        |AZ     |89     |
+|Jess       |AZ     |Null   |
+|Richard    |AZ     |93     |
+
+- INNER - An `INNER` join returns results from both tables which match the query condition. The example in **Aliases** above is an Inner join, using `JOIN` or `INNER JOIN` will both create this type of query. If we inner joined our tables above we would only get results for Richard because only he has done both tests.
+
+|Student    |Course |Score  |
+|-----------|------ |-------|
+|Richard    |AWS    |92     |
+|Richard    |AZ     |93     |
 
 - FULL (OUTER) - A `FULL` or `OUTER` join returns results from both tables, even where results from one table doesn't match the condition. E.g.
 
@@ -433,11 +452,27 @@ There are three common types of joins:
 |Jess       |AZ     |Null   |
 |Richard    |AZ     |93     |
 
-Let's say we wanted to know the exam scores for three students for the AWS and AZ exam, and the results are kept in separate tables; With an Inner Join we would only get results for Richard because only he has done both tests. With an Outer Join we can retrieve results with a NULL value.
+With an Inner Join we would only get results for Richard because only he has done both tests. With an Outer Join we can retrieve results with a NULL value.
 
-- LEFT (OUTER) JOIN - Behaves like the Full Join, but it can only retrieve *none-matching* records from the left table, the table on the right's records must match the query condition. In the example table above, only the NULL values from AWS or AZ would return, you wouldn't get the NULLs from the other.
+- LEFT (OUTER) JOIN - Behaves like the Full Join, but it can only retrieve *none-matching* records from the left table, the table on the right's records must match the query condition - *in this example AWS is on the left* 
 
-- RIGHT (OUTER) JOIN - As above, but the table on the right can return unmatched records, and the left must meet the query. FYI. When these JOINS refer to LEFT and RIGHT, that is the order you provide them in your SELECT statement.
+|Student    |Course |Score  |
+|-----------|------ |-------|
+|Ant        |AWS    |Null   |
+|Jess       |AWS    |90     |
+|Richard    |AWS    |92     |
+|Ant        |AZ     |89     |
+|Richard    |AZ     |93     |
+
+- RIGHT (OUTER) JOIN - As above, but the table on the right can return unmatched records, and the left must meet the query. FYI. When these JOINS refer to LEFT and RIGHT, that is the order you provide them in your SELECT statement - *in this example AWS is on the left* 
+
+|Student    |Course |Score  |
+|-----------|------ |-------|
+|Jess       |AWS    |90     |
+|Richard    |AWS    |92     |
+|Ant        |AZ     |89     |
+|Jess       |AZ     |Null   |
+|Richard    |AZ     |93     |
 
 <img src="img/joins.jpg" width="600" />
 
@@ -456,9 +491,14 @@ Transactions must adhere to the following ACID properties:
 
 **Don’t worry about the commands or syntax for transactions, at our level just appreciate that these types of operations are traditionally one of the key features and benefits of SQL databases.**
 
-### Practical Challenge
+### Challenge
 
-- Model a company.
+[Click here for the Challenge guide](Practical_challenge.md)
+- Use the skills and knowledge you have built up to model the DB requirements for a company.
+
+### Project
+
+
 
 ## Non-Relational (NoSQL) Databases
 
