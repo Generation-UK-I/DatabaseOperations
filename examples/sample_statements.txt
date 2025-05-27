@@ -40,6 +40,11 @@ CREATE TABLE orders (
     FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
 
+CREATE TABLE products (
+	product_id INT NOT NULL PRIMARY KEY,
+	product_name VARCHAR(30),
+	product_price DECIMAL(6, 2)
+);
 
 INSERT INTO products (product_id, product_name, product_price)
 VALUES

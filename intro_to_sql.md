@@ -650,12 +650,11 @@ This line identifies each unique piece of information in the log enrty above, de
 
 A data pipeline describes the path data takes from being gathered, to being useable. A typical pipeline looks like this:
 
-            Data Lake --> Data Warehouse --> Database
+            Data Lake > Data Warehouse > Database
 
 - A Data-Lake, into which RAW unstructured data can be deposited. 
 - Unstructured data from the lake can be extracted, and transformed into a semi-structured format, suitable for storing in a Data Warehouse.
 - Semi-structured data from the warehouse can then be transferred into a NoSQL DB if no further structure is necessary, or transformed into a structured format for ingestion into a SQL database.
-
 
 ## SQL Project
 
