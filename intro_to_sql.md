@@ -22,7 +22,7 @@ Structured Query Language (SQL) is a database type which was developed in the 70
 SQL databases store data in tables which are defined by a schema. Each data item entered into the table must adhere to this schema.
 You can create multiple tables, and then create relationships between them based on data items they have in common.
 
-We're going to install a database engine (an RDBMS) on our Linux In a momr, but when done we need to create a database, in which we can create our tables to store our data. 
+We're going to install a database engine (an RDBMS) on our Linux virtual machine shortly, then we need to create a database, in which we can create our tables to store our data. 
 
 To create a database use the following SQL command.
 
