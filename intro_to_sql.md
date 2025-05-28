@@ -89,13 +89,13 @@ Tables in SQL are comprised of Fields (columns) and Records (rows), each record 
 
 Every record in the table needs a unique identifier, known as a `PRIMARY` Key, since two entries might have the same name.
 
-<img src="img/primary_keys.jpg" width="600" />
+<img src="img/primary_keys.jpg" width="800" />
 
 When one table has a field for another table’s Primary Key, such as an Orders table referencing a Customer_ID number when they make a purchase, we call this a Foreign Key. 
 
 Linking Primary and Foreign keys is how we create relationships between tables.
 
-<img src="img/foreign_keys.jpg" width="600" />
+<img src="img/foreign_keys.jpg" width="800" />
 
 ### SQL Schema
 
@@ -131,7 +131,7 @@ Although some of the different SQL databases have been developed to support nich
 - BOOLEAN = true/false
 And many others…
 
-<img src="img/data_types.jpg" width="600" />
+<img src="img/data_types.jpg" width="400" />
 
 ### Practical 2
 
