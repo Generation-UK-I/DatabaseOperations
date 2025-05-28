@@ -87,13 +87,15 @@ A common example when learning is to model a simple business which needs a custo
 
 Tables in SQL are comprised of Fields (columns) and Records (rows), each record is an new entry in the database, and the fields are the data items captured for each record.
 
-Every record in the table needs a unique identifier, known as a ‘Primary Key’, since two entries might have the same name.
+Every record in the table needs a unique identifier, known as a `PRIMARY` Key, since two entries might have the same name.
+
+<img src="img/primary_keys.jpg" width="600" />
 
 When one table has a field for another table’s Primary Key, such as an Orders table referencing a Customer_ID number when they make a purchase, we call this a Foreign Key. 
 
 Linking Primary and Foreign keys is how we create relationships between tables.
 
-*Instructor prompt: WB*
+<img src="img/foreign_keys.jpg" width="600" />
 
 ### SQL Schema
 
@@ -128,6 +130,8 @@ Although some of the different SQL databases have been developed to support nich
 - DATE, TIME, DATETIME = yy-mm-dd, hh:mm:ss, YYYY-MM-DD hh:mm:ss
 - BOOLEAN = true/false
 And many others…
+
+<img src="img/data_types.jpg" width="600" />
 
 ### Practical 2
 
@@ -294,7 +298,9 @@ Most databases will require several tables, because for example, the customer ta
 
 We've already made multiple tables, but so far they aren't *related* to each other. Let's change that.
 
-Ideally when one table references another it should reference the target table’s Primary Key, and we define the field in the new table as a FOREIGN key.
+Ideally when one table references another it should reference the target table’s Primary Key, and we define the field in the new table as a `FOREIGN` key.
+
+
 
 Hopefully your CREATE TABLE statements look something like the above example.
 
