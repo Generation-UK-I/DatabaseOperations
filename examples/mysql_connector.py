@@ -1,13 +1,15 @@
+#first type "python3 -m pip install mysql-connector-python" into terminal
+#NOT python3 -m pip install mysql-connector
+
 import mysql.connector
 
 def retrieve_and_display_products():
     # Database connection details
     config = {
-        'user': 'root',  # Replace with your database username
-        'password': 'root',  # Replace with your database password
-        'host': 'localhost',  # Replace with your database host
+        'user': 'admin',  # Replace with your database username
+        'password': 'admin',  # Replace with your database password
+        'host': '192.168.1.138',  # Replace with your database host
         'database': 'my_shop',  # Replace with your database name
-        'raise_on_warnings': True
     }
 
     try:
@@ -16,19 +18,24 @@ def retrieve_and_display_products():
         cursor = connection.cursor()
 
         # SQL query to retrieve products
-        query = "SELECT * FROM products"
+        query = "SELECT * FROM employees"
         cursor.execute(query)
 
-        # Fetch all rows from the executed query
-        products = cursor.fetchall()
+        # Fetch all rows from the executed query (tuples)
+        employees = cursor.fetchall()
 
         # Display the products
-        if products:
-            print("Products in the database:")
-            for product in products:
-                print(product)  # Print each product (tuple)
-        else:
-            print("No products found in the database.")
+        if employees:
+            user_login = input("please enter your username:")
+            for x in employees:
+                if x[1] == user_login:
+                    password = input("please enter your password:")
+                    if password == x[2]:
+                        print("Login successful...")
+                    else:
+                        print("password incorrect")
+            else:
+                print("Please enter valid credentials.")
 
     except mysql.connector.Error as err:
         print(f"Error: {err}")

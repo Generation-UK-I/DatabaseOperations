@@ -1,18 +1,23 @@
 # Intro to Databases
 
-Pretty much every organisation that holds data will have it in a database which makes it easier to store, manage, and retrieve the data. 
+Pretty much every organisation that holds data will have it in a database which makes it easier to store, manage, and retrieve the data.
+
 There are various different database options available, which are often tailored to specific use cases, however they all fit into one of two categories, SQL and NoSQL.
 
 ## Relational Databases (SQL)
+
 ### RDBMS
 
 The software that lets you create, manage, and query databases, is called a **relational database management system**. Some popular ones include:
+
 - MySQL
 - PostgreSQL
 - Microsoft SQL Server
 
 ### Practical 1
+
 [Click here for the Practical 1 guide](Practical_1.md)
+
 - Restore VM from Snapshot
 - Install MySQL
 
@@ -22,7 +27,7 @@ Structured Query Language (SQL) is a database type which was developed in the 70
 SQL databases store data in tables which are defined by a schema. Each data item entered into the table must adhere to this schema.
 You can create multiple tables, and then create relationships between them based on data items they have in common.
 
-We're going to install a database engine (an RDBMS) on our Linux virtual machine shortly, then we need to create a database, in which we can create our tables to store our data. 
+We're going to install a database engine (an RDBMS) on our Linux virtual machine shortly, then we need to create a database, in which we can create our tables to store our data.
 
 To create a database use the following SQL command.
 
@@ -48,7 +53,7 @@ We can also delete databases with the DROP keyword.
 DROP DATABASE test_db;
 ```
 
-CREATE and DROP can also be used for tables, which we'll look at shortly. 
+CREATE and DROP can also be used for tables, which we'll look at shortly.
 
 ### The SQL Language
 
@@ -57,6 +62,7 @@ Although you can interact with SQL databases via a GUI, SQL was developed at a t
 Many of the different types of SQL databases have their own additional features, such as supporting unique data types, or in some cases restrictions, such as naming conventions, but they should all support the standard SQL features and commands.
 
 The SQL commands can be divided into sub-groups based on the type of functionality they provide:
+
 - DDL - used to define the structure of the database and its objects such as tables, schemas, and indexes.
 - DML - used to manipulate data within the database
 - DQL - commands to retrieve data from the database
@@ -69,29 +75,32 @@ SQL commands have simple syntax and conventions, compared to say Python or Bash.
 SELECT * FROM customers WHERE Name = “Company A”;
 ```
 
-Commonly they’re split over multiple lines for readability. SQL doesn’t care about newlines, it looks for the semi-colon (;) to end the statement. 
+Commonly they’re split over multiple lines for readability. SQL doesn’t care about newlines, it looks for the semi-colon (;) to end the statement.
 
 ```sql
 SELECT * FROM customers 
 WHERE Name = “Company A”;
 ```
+
 Missing the semi-colon is a common mistake, if your terminal is showing this prompt `->` it often means you missed the `;`.
 
-One convention is that SQL keywords are capitalised, therefore for easy readability tables and fields are usually in lower case. **NOTE: SQL keywords are not case-sensitive, but database names, table names, and field names are.**
+One convention is that SQL keywords are capitalised, therefore for easy readability tables and fields are usually in lower case.
+
+>NOTE: SQL keywords are not case-sensitive, but database names, table names, and field names are.
 
 ### SQL Tables
 
-A database will typically contain multiple tables, but exactly which ones is up to you and your organisation’s needs. 
+A database will typically contain multiple tables, but exactly which ones is up to you and your organisation’s needs.
 
-A common example when learning is to model a simple business which needs a customer_table, products_table, and an orders_table.
+A common example when learning is to model a simple business which needs a `customer_table`, `products_table`, and an `orders_table`.
 
 Tables in SQL are comprised of Fields (columns) and Records (rows), each record is an new entry in the database, and the fields are the data items captured for each record.
 
-Every record in the table needs a unique identifier, known as a `PRIMARY` Key, since two entries might have the same name.
+Every record in the table needs a unique identifier, known as a `Primary Key`, since two entries might have the same name.
 
 <img src="img/primary_keys.jpg" width="800" />
 
-When one table has a field for another table’s Primary Key, such as an Orders table referencing a Customer_ID number when they make a purchase, we call this a Foreign Key. 
+When one table has a field for another table’s Primary Key, such as an Orders table referencing a `Customer_ID` number when they make a purchase, we call this a Foreign Key.
 
 Linking Primary and Foreign keys is how we create relationships between tables.
 
@@ -103,10 +112,10 @@ Here is an example of creating a basic employee table and schema:
 
 ```sql
 CREATE TABLE customers (
-	customer_ID INT NOT NULL PRIMARY KEY,
-	first_name VARCHAR(30),
-	last_name VARCHAR(30),
-	age INT UNSIGNED NOT NULL
+    customer_ID INT NOT NULL PRIMARY KEY,
+    first_name VARCHAR(30),
+    last_name VARCHAR(30),
+    age INT UNSIGNED NOT NULL
 );
 ```
 
@@ -123,12 +132,13 @@ We’re only using two data types in our customers table, INTs and VARCHARS, man
 ### SQL Data Types
 
 Although some of the different SQL databases have been developed to support niche data types and features, most standard data types are supported by all:
-- INT = whole numbers, use UNSIGNED to restrict to positive numbers only.
-- DECIMAL = decimal numbers to a defined precision e.g. DECIMAL(8, 2) stores up to 8 digits, with 2 after the decimal point. 
-- CHAR(number) = a fixed length string
-- VARCHAR(number) = a string up to the specified length
-- DATE, TIME, DATETIME = yy-mm-dd, hh:mm:ss, YYYY-MM-DD hh:mm:ss
-- BOOLEAN = true/false
+
+- `INT` = whole numbers, use UNSIGNED to restrict to positive numbers only.
+- `DECIMAL` = decimal numbers to a defined precision e.g. DECIMAL(8, 2) stores up to 8 digits, with 2 after the decimal point.
+- `CHAR(number)` = a fixed length string
+- `VARCHAR(number)` = a string up to the specified length
+- `DATE`, `TIME`, `DATETIME` = yy-mm-dd, hh:mm:ss, YYYY-MM-DD hh:mm:ss
+- `BOOLEAN` = true/false
 And many others…
 
 <img src="img/data_types.jpg" width="400" />
@@ -136,8 +146,9 @@ And many others…
 ### Practical 2
 
 [Click here for the Practical 2 guide](Practical_2.md)
+
 - Practice creating and dropping databases and tables.
-- Try to use CREATE, DROP, SHOW, USE, and DESCRIBE.
+- Try to use `CREATE`, `DROP`, `SHOW`, `USE`, and `DESCRIBE`.
 
 ### Working with Data
 
@@ -149,14 +160,14 @@ Data can also be imported and exported in bulk using a variety of file types, a 
 
 ### Inserting Records
 
-Adding records into a table can be done with the INSERT statement as follows:
+Adding records into a table can be done with the `INSERT` statement as follows:
 
 ```sql
 INSERT INTO customers (customer_ID, first_name, last_name, age) 
 VALUES (1, 'Alice', 'Smith', 33);
 ```
 
-As we're just learning, it's good practice to verfiy your record, you can do so by running a simple SELECT statement.
+As we're just learning, it's good practice to verify your record, you can do so by running a simple `SELECT` statement.
 
 ```sql
 SELECT * FROM customers;
@@ -164,11 +175,11 @@ SELECT * FROM customers;
 
 We'll come back to the SELECT statement shortly.
 
-We'll look at some variations which can add multiple records at once through the CLI, but you should probably stick to one at a time for now to build familarity with the logic.
+We'll look at some variations which can add multiple records at once through the CLI, but you should probably stick to one at a time for now to build familiarity with the logic.
 
 ### Updating Records
 
-To make changes to existing records use the UPDATE statement.
+To make changes to existing records use the `UPDATE` statement.
 
 ```sql
 UPDATE customers
@@ -176,11 +187,12 @@ SET Age = 31
 WHERE customer_ID = 1;
 ```
 
-Notice the WHERE clause, this allows you to filter the records you retrieve from the database, in this case to make a simple update. But this is the key to retrieving with the SELECT statement, and gaining insights into your data. 
+Notice the `WHERE` clause, this allows you to filter the records you retrieve from the database, in this case to make a simple update. But this is the key to retrieving with the SELECT statement, and gaining insights into your data.
 
 ### Practical 3
 
 [Click here for the Practical 3 guide](Practical_3.md)
+
 - Create customers, and products tables with appropriate fields defined.
 - Insert records into each table.
 - Verify your records with `SELECT * FROM [table]`
@@ -188,7 +200,7 @@ Notice the WHERE clause, this allows you to filter the records you retrieve from
 
 ### Selecting Records
 
-Databases allow you to store, manage, and retrieve your data. Retrieval is about providing access to your data quickly and efficiently, for example looking up a customer’s records when then call in for support. 
+Databases allow you to store, manage, and retrieve your data. Retrieval is about providing access to your data quickly and efficiently, for example looking up a customer’s records when then call in for support.
 
 ```sql
 SELECT *
@@ -209,8 +221,9 @@ Quick retrieval is one of the primary uses for a database, commonly GUI based ap
 ### Practical 4
 
 [Click here for the Practical 4 guide](Practical_4.md)
+
 - Create and populate tables
-- Use SELECT statements to query tables
+- Use `SELECT` statements to query tables
 
 ### More SELECT statements
 
@@ -237,7 +250,7 @@ The following comparison operators can be used
 
 #### String Patterns
 
-We also have the ability to match patterns in strings, but we use the LIKE or NOT LIKE clauses in our SQL statements.  
+We also have the ability to match patterns in strings, but we use the `LIKE` or `NOT LIKE` clauses in our SQL statements.  
 
 |Pattern                    |Syntax        |
 |---------------------------|--------------|
@@ -255,7 +268,7 @@ FROM customers
 WHERE first_name LIKE 'Sc%';
 ```
 
-The SELECT statement also allows you to analyse your data to identify patterns, trends, and answer questions. 
+The `SELECT` statement also allows you to analyse your data to identify patterns, trends, and answer questions.
 
 You can write queries to identify not only the best selling products, and the biggest spending customers, but also go deeper. What about the best selling products by geography, time of year, or both? Who are the biggest spending customers by age? Or any other summaries, or insights you can think of.
 
@@ -263,7 +276,7 @@ This extra insight might inform decisions for marketing teams, promotion plannin
 
 #### Sorting Results
 
-The ORDER BY clause allows you to specify the order your returned records will be displayed.
+The `ORDER BY` clause allows you to specify the order your returned records will be displayed.
 
 ```sql
 SELECT * FROM customers WHERE age <10 ORDER BY first_name;
@@ -286,9 +299,10 @@ DELETE FROM customers WHERE first_name LIKE 'Alice';
 ### Practical 5
 
 [Click here for the Practical 5 guide](Practical_5.md)
-- Practice SELECT statements using comparison operators and pattern matching clauses.
-- Practice using ORDER BY to sort your output. 
-- Try DELETING records.
+
+- Practice `SELECT` statements using comparison operators and pattern matching clauses.
+- Practice using `ORDER BY` to sort your output.
+- Try `DELETING` records.
 
 ### Multiple Tables
 
@@ -298,18 +312,16 @@ Most databases will require several tables, because for example, the customer ta
 
 We've already made multiple tables, but so far they aren't *related* to each other. Let's change that.
 
-Ideally when one table references another it should reference the target table’s Primary Key, and we define the field in the new table as a `FOREIGN` key.
+Ideally when one table references another it should reference the target table’s Primary Key, and we define the field in the new table as a `Foreign key`.
 
-
-
-Hopefully your CREATE TABLE statements look something like the above example.
+Hopefully your `CREATE TABLE` statements look something like the above example.
 
 ```sql
 CREATE TABLE customers (
-	customer_ID INT NOT NULL PRIMARY KEY,
-	first_name VARCHAR(30),
-	last_name VARCHAR(30),
-	age INT UNSIGNED NOT NULL
+    customer_ID INT NOT NULL PRIMARY KEY,
+    first_name VARCHAR(30),
+    last_name VARCHAR(30),
+    age INT UNSIGNED NOT NULL
 );
 
 CREATE TABLE products (
@@ -318,6 +330,7 @@ CREATE TABLE products (
     product_price DECIMAL(10,2)
 );
 ```
+
 Some tables are populated with data from others, our Orders table might take data from customers and products tables to make a new entry.
 
 Now we're going to create an orders table which references both customers and products by creating foreign.
@@ -334,13 +347,13 @@ CREATE TABLE orders (
 );
 ```
 
-**The FOREIGN key and the PRIMARY key it references should contain the same data type and attributes or you'll likely get an error.**
+>The FOREIGN key and the PRIMARY key it references should contain the same data type and attributes or you'll likely get an error.
 
 #### Add some Records
 
-Lets add some data to the tables. We'll also update our syntax to add multiple records at once. 
+Lets add some data to the tables. We'll also update our syntax to add multiple records at once.
 
-*It is recommended that you copy the following examples to a text editor and extend them so you have more data to work with before running them in MySQL*
+>It is recommended that you copy the following examples to a text editor and extend them so you have more data to work with before running them in MySQL
 
 ```sql
 -- Insert records into the customers table
@@ -368,6 +381,7 @@ VALUES
 ### Practical 6
 
 [Click here for the Practical 6 guide](Practical_6.md)
+
 - Make customers, products, and orders tables with `PRIMARY` and `FOREIGN` keys.
 - Add records to them, and ensure you can query the individual tables.
 
@@ -377,19 +391,20 @@ Now we have records in each table, and two of the fields in the orders table ref
 
 We've already retrieved data from individual tables, and we can view orders from the orders table in the same way. With this table structure and primary/foreign key relationships, we can create more complex `SELECT` statements to retrieve data from related tables together.
 
-For example, in our companies, let's say completed orders need to go to the Despatch Team for packing and postage. They look at the orders table, and it tells them what products to pick and package, *but where do they send it*? 
+For example, in our companies, let's say completed orders need to go to the Despatch Team for packing and postage. They look at the orders table, and it tells them what products to pick and package, *but where do they send it*?
 
-One option could be to duplicate the customer details from the customer table to the orders table when they place an order. 
+One option could be to duplicate the customer details from the customer table to the orders table when they place an order.
 
-*Question:* Why would this not be ideal?
+**Question:** Why would this not be ideal?
 
-*Answer:* The key reasons are:
+**Answer:** The key reasons are:
+
 - Data duplication is inefficient and wastes space on disk.
 - If the data changes it needs to be changed in multiple locations. If the data doesn't match in different locations how would you know which one is accurate?
 
 It would be better to retrieve the current customer contact details from the most up to date source, i.e. the customer table. We can do this because there is a relationship between the customer and orders tables in our *relational database*.
 
-The following SQL statement will retrieve the customer's first and last name for a particular record in the orders table, even though this data is not stored in the orders table. 
+The following SQL statement will retrieve the customer's first and last name for a particular record in the orders table, even though this data is not stored in the orders table.
 
 ```sql
 SELECT customers.first_name, customers.last_name
@@ -401,6 +416,7 @@ WHERE orders.order_id = 201;
 ### Joins
 
 JOIN operations combine rows from two or more tables based on a related column. In our example both tables share the `customer_id` field, so the above query:
+
 1. Starts with the orders table and finds the record with `order_id 201`.
 2. It then uses the `customer_id` from that record to find the corresponding record in the customers table, which it can do because they're joined on their related fields.
 3. Finally, it selects the `first_name` and `last_name` from the appropriate record, and returns them as the result.
@@ -419,7 +435,9 @@ WHERE o.order_id = 201;
 ```
 
 ### Practical 7
+
 [Click here for the Practical 7 guide](Practical_7.md)
+
 - Experiment with the above syntax to create queries against multiple tables using the join statement.
 
 ### Join Types
@@ -427,6 +445,7 @@ WHERE o.order_id = 201;
 There are three common types of joins. To understand them, let's say we wanted to aggregate the exam scores for three students for the AWS and AZ exam, and the results are kept in separate tables.
 
 <ins>AWS Results</ins>
+
 |Student    |Course |Score  |
 |-----------|------ |-------|
 |Ant        |AWS    |Null   |
@@ -434,6 +453,7 @@ There are three common types of joins. To understand them, let's say we wanted t
 |Richard    |AWS    |92     |
 
 <ins>Azure Results</ins>
+
 |Student    |Course |Score  |
 |-----------|------ |-------|
 |Ant        |AZ     |89     |
@@ -460,7 +480,7 @@ There are three common types of joins. To understand them, let's say we wanted t
 
 With an Inner Join we would only get results for Richard because only he has done both tests. With an Outer Join we can retrieve results with a NULL value.
 
-- LEFT (OUTER) JOIN - Behaves like the Full Join, but it can only retrieve *none-matching* records from the left table, the table on the right's records must match the query condition - *in this example AWS is on the left* 
+- LEFT (OUTER) JOIN - Behaves like the Full Join, but it can only retrieve *none-matching* records from the left table, the table on the right's records must match the query condition - *in this example AWS is on the left*
 
 |Student    |Course |Score  |
 |-----------|------ |-------|
@@ -484,41 +504,42 @@ With an Inner Join we would only get results for Richard because only he has don
 
 ### Transactions
 
-Another key feature of SQL databases is support for transactions. 
+Another key feature of SQL databases is support for transactions.
+
 A transaction is a sequence of operations performed as a single logical unit of work.
 
 To understand the concept, consider most common transactions we rely upon each day - electronic payments. Money needs to be deducted from one account, and deposited in another - if either step fails, they should both fail, and be rolled back.
 
-Transactions must adhere to the following ACID properties:
-- Atomicity: Ensures that all operations within a transaction are completed successfully. If any operation fails, the entire transaction is rolled back.
-- Consistency: Guarantees that a transaction transforms the database from one valid state to another.
-- Isolation: Ensures that concurrent transactions do not interfere with each other.
-- Durability: Ensures that once a transaction is committed, its changes are permanently stored.
+Transactions must adhere to the following `ACID` properties:
+
+- `Atomicity`: Ensures that all operations within a transaction are completed successfully. If any operation fails, the entire transaction is rolled back.
+- `Consistency`: Guarantees that a transaction transforms the database from one valid state to another.
+- `Isolation`: Ensures that concurrent transactions do not interfere with each other.
+- `Durability`: Ensures that once a transaction is committed, its changes are permanently stored.
 
 **Don’t worry about the commands or syntax for transactions, at our level just appreciate that these types of operations are traditionally one of the key features and benefits of SQL databases.**
 
 ### Challenge
 
-[Click here for the Challenge guide](Practical_challenge.md)  
+[Click here for the Challenge guide](Practical_challenge.md)
+
 Use the skills and knowledge you have built up to model the DB requirements for a company.
 
 ## Non-Relational (NoSQL) Databases
 
 We'll now look at non-relational databases, but we're not going to get hands on, partly because they're a bit more straight forward, and you don't need to learn a whole new language to use them.
 
-    NoSQL databases are a much more modern approach to storing and retrieving data. 
+>NoSQL databases are a much more modern approach to storing and retrieving data.
 
-NoSQL databases still need a table to store data, but the table is not strictly defined. Records within the table can be completely different and unrelated to each other, and consist of completely different data types. 
+NoSQL databases still need a table to store data, but the table is not strictly defined. Records within the table can be completely different and unrelated to each other, and consist of completely different data types.
 
-    The lack of a strictly enforced schema is one of the key differences between SQL and NoSQL. 
+>The lack of a strictly enforced schema is one of the key differences between SQL and NoSQL.
 
-Another big difference is in the name, non-relational, this means that we do not connect different tables together, and queries are therefore not typically about retrieving records from multiple locations, applying logic and filters to them. 
+Another big difference is in the name, non-relational, this means that we do not connect different tables together, and queries are therefore not typically about retrieving records from multiple locations, applying logic and filters to them.
 
 Instead, NoSQL queries are about SPEED! NoSQL DB's are best placed for quickly retrieving matching records, from perhaps billions, quickly. Does this sound like something you use regularly?
 
-???
-
-This type of database commonly powers internet search engines.
+>This type of database commonly powers internet search engines.
 
 There are billions of web pages, and we just want to quickly retrieve results relevant to our key words - we don't do complex searches with multiple data sources, and various comparison operators, we filter them ourselves, we just want them quickly!
 
@@ -544,19 +565,19 @@ When deploying to the cloud both scaling options are available, you can scale bo
 
 As mentioned, records in NoSQL DBs do not need to conform to a strict schema, this means that you can store any type of data in it. An entry could be a simple key value pair:
 
-```
+```json
 "Product_name" : "Frying Pan"
 ```
 
 The value could be a link to an external resource:
 
-```
+```json
 "Product_image" : "http://[domain-name].com/[resource-path]"
 ```
 
 Or, following a similar syntax to dictionaries in Python, a record could be a JSON object containing multiple KVP's which could be the attributes for that record:
 
-```
+```json
 "product_1" : {
     "name" : "Frying Pan",
     "image" : "http://scouts-catering.com/images/frying_pan.jpg",
@@ -571,7 +592,7 @@ Or, following a similar syntax to dictionaries in Python, a record could be a JS
 
 However, as a catering supply company, I sell a lot more than frying pans. The next record in the DB could be:
 
-```
+```json
 "product_2" : {
     "name" : "Cling Film",
     "image" : "http://scouts-catering.com/images/cling_film.jpg",
@@ -584,7 +605,7 @@ Notice that the attributes for the cling film are different to the frying pan.
 
 Since I have all of this cookware, maybe I'll make and sell cakes too:
 
-```
+```json
 "product_2" : {
     "name" : "Chocolate Cake",
     "image" : "http://scouts-catering.com/images/chocolate_cake.jpg",
@@ -594,9 +615,9 @@ Since I have all of this cookware, maybe I'll make and sell cakes too:
         "size_3" : 24
         }
     "Weight" : {
-        "size_1" : 1.5kg,
-        "size_2" : 2.0kg,
-        "size_3" : 2.5kg
+        "size_1" : 1.5 kg,
+        "size_2" : 2.0 kg,
+        "size_3" : 2.5 kg
     }
     "ingredients" : ["flour", "eggs", "milk", "sugar", "butter", "cocoa"]
     }
@@ -610,13 +631,13 @@ In addition to JSON objects and strings your NoSQL DB can store a variety of oth
 
 When comparing the two categories of databases, there are a few points we've already covered:
 
-|   | SQL  | NoSQL  |
+||SQL|NoSQL|
 |---|---|---|
 |Schema   |Fields and records must conform to a strict schema, defined when you create the table.  |Records do not have to follow a strict schema.|
 |Scaling|Typically limited to vertical scaling|Supports horizontal scaling|
 |Use cases|Designed for complex queries and transactions|Designed for rapid retrieval|
 
-But there are more factors to be aware of. 
+But there are more factors to be aware of.
 
 ### Data Structure
 
@@ -626,9 +647,9 @@ Organisations have access to vast amounts of data, much of which they can genera
 
 Generally speaking, when looking at a piece of data, if it has a clear meaning, we call this structured data.
 
-Consider `3665156958940023`, `01704568473`, or `150876`; Out of context these could be anything, but if we label them `card_no`, `tel`, and `DOB` suddenly they make sense. 
+Consider `3665156958940023`, `01704568473`, or `150876`; Out of context these could be anything, but if we label them `card_no`, `tel`, and `DOB` suddenly they make sense.
 
-In these cases we could enter them into a SQL database, and define the appropriate schema to ensure the data is added correctly - so the card field will not accept letters, and the DOB field only takes 6 numberical characters, and so on. 
+In these cases we could enter them into a SQL database, and define the appropriate schema to ensure the data is added correctly - so the card field will not accept letters, and the DOB field only takes 6 numerical characters, and so on.
 
 These are examples of structured data - the meaning of the data is clear, and it is suitable for adding to a SQL database.
 
@@ -656,9 +677,9 @@ This line identifies each unique piece of information in the log enrty above, de
 
 A data pipeline describes the path data takes from being gathered, to being useable. A typical pipeline looks like this:
 
-            Data Lake > Data Warehouse > Database
+`Data Lake` > `Data Warehouse` > `Database`
 
-- A Data-Lake, into which RAW unstructured data can be deposited. 
+- A Data-Lake, into which RAW unstructured data can be deposited.
 - Unstructured data from the lake can be extracted, and transformed into a semi-structured format, suitable for storing in a Data Warehouse.
 - Semi-structured data from the warehouse can then be transferred into a NoSQL DB if no further structure is necessary, or transformed into a structured format for ingestion into a SQL database.
 

@@ -89,3 +89,11 @@ VALUES
 	(222, 5, 101, '2023-11-22', 2),
     (223, 4, 102, '2023-11-23', 1),
     (224, 3, 103, '2023-11-24', 3);
+	
+
+CREATE USER 'admin'@'%' IDENTIFIED BY 'admin';
+	
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%';
+
+SELECT User, Host FROM mysql.user WHERE User = 'admin';
+
