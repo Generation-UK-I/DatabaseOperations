@@ -74,9 +74,9 @@ Use `sp_executesql` for dynamic SQL — it supports parameters safely (helps pre
 
 |Concept|MySQL|SQL Server|
 |---|---|---|
-|Run stored procedure|CALL procedure_name();|EXEC procedure_name;|
-|Run dynamic SQL|PREPARE stmt FROM ...;|EXECUTE stmt;|EXEC(@sql) or sp_executesql|
-|Rename table, show info|RENAME TABLE, SHOW TABLES|EXEC sp_rename, EXEC sp_help|
+|Run stored procedure|`CALL procedure_name();`|`EXEC procedure_name;`|
+|Run dynamic SQL|`PREPARE stmt FROM ...; EXECUTE stmt;`|`EXEC(@sql) or sp_executesql`|
+|Rename table, show info|`RENAME TABLE, SHOW TABLES`|`EXEC sp_rename, EXEC sp_help`|
 
 In brief:
 
